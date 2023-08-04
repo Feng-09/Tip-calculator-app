@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: SpaceMono_bold;
+  src: url(fonts/SpaceMono-Bold.ttf);
+}
+@font-face {
+  font-family: SpaceMono_reg;
+  src: url(fonts/SpaceMono-Regular.ttf);
+}
+/*colors*/
+body {
+  background-color: hsl(185, 41%, 84%);
+  text-align: center;
+}
+
+.logo {
+  padding: 3rem;
+}
+
+main {
+  background-color: hsl(0, 0%, 100%);
+  padding: 1.8rem;
+  text-align: start;
+  border-radius: 2rem 2rem 0 0;
+  height: 100%;
+}
+
+.headers {
+  font-family: SpaceMono_reg;
+  font-size: 1rem;
+  color: hsl(186, 14%, 43%);
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.input {
+  padding: 0.4rem 1rem;
+  width: 100%;
+  text-align: end;
+  font-family: SpaceMono_bold;
+  font-size: 1.5rem;
+  color: hsl(183, 100%, 15%);
+  font-weight: 700;
+  border: 1px solid hsl(186, 14%, 43%);
+  border-radius: 0.5rem;
+}
+.input:hover {
+  border: 3px solid hsla(185, 71%, 68%, 0.8);
+  cursor: pointer;
+}
+.input:focus {
+  outline: none;
+  border: 3px solid hsl(172, 67%, 45%);
+}
+
+.numinps {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  position: absolute;
+  top: 3.2rem;
+  left: 1rem;
+}
+
+.btninps {
+  display: grid;
+  width: 100%;
+  height: 10rem;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+  grid-template-rows: 2.7rem 2.7rem 2.7rem;
+  align-content: space-between;
+}
+.btninps > button {
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 0.4rem;
+  border: none;
+  transition: 0.1s;
+  font-family: SpaceMono_bold;
+  font-size: 1.4rem;
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+}
+.btninps > button:hover {
+  background-color: hsla(185, 71%, 68%, 0.8);
+  transition: 0.1s;
+  cursor: pointer;
+}
+.btninps > input {
+  text-align: end;
+  padding: 1rem;
+  font-family: SpaceMono_bold;
+  font-size: 1.4rem;
+  color: hsl(183, 100%, 15%);
+  font-weight: 700;
+  outline: none;
+  border: 1px solid hsl(186, 14%, 43%);
+  border-radius: 0.4rem;
+}
+.btninps > input:hover {
+  border: 3px solid hsla(185, 71%, 68%, 0.8);
+  cursor: pointer;
+}
+.btninps > input:focus {
+  border: 3px solid hsl(172, 67%, 45%);
+}
+
+.tipinp {
+  margin-bottom: 2rem;
+}
+
+button.selected {
+  background-color: hsl(172, 67%, 45%);
+}
+
+.result {
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 1rem;
+  width: 100%;
+  height: 18rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.result > div {
+  display: flex;
+  justify-content: space-between;
+}
+.result > div > p {
+  font-family: SpaceMono_reg;
+  font-size: 1rem;
+  color: hsl(189, 41%, 97%);
+  font-weight: 600;
+}
+.result > div > p > span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.5;
+}
+.result > div > h1 {
+  font-family: SpaceMono_bold;
+  font-size: 2.5rem;
+  color: hsl(172, 67%, 45%);
+  font-weight: 700;
+}
+.result > button {
+  height: 3rem;
+  background-color: hsl(172, 67%, 45%);
+  opacity: 0.2;
+  border-radius: 0.5rem;
+  border: none;
+  font-family: SpaceMono_bold;
+  font-size: 1.2rem;
+  color: hsl(183, 100%, 15%);
+  font-weight: 700;
+}
+.result > button:hover {
+  opacity: 1;
+  background-color: hsla(185, 71%, 68%, 0.8);
+  transition: 0.2s;
+}
+
+footer {
+  font-family: SpaceMono_reg;
+  position: relative;
+  bottom: 0;
+}
+footer > a {
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+
+#error,
+#error2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: SpaceMono_reg;
+  font-size: 1rem;
+  color: rgb(228, 119, 119);
+  font-weight: 600;
+  animation: shake;
+  animation-duration: 0.2s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(-0.2rem);
+  }
+  50% {
+    transform: translateX(0.2rem);
+  }
+  75% {
+    transform: translateX(-0.2rem);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+input.error {
+  border: 2px solid rgb(228, 119, 119);
+}
+
+@media screen and (min-width: 960px) {
+  body {
+    padding: 1% 0 3% 0;
+  }
+  main {
+    display: flex;
+    justify-content: space-between;
+    width: 60rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0.1rem 0.1rem 2rem hsla(185, 71%, 68%, 0.8);
+  }
+  .result {
+    width: 27rem;
+    height: 26rem;
+    padding: 3rem;
+  }
+  .result > button {
+    margin-top: 3rem;
+  }
+  .result > div > h1 {
+    font-size: 3.2rem;
+    position: relative;
+    bottom: 1rem;
+  }
+  #people {
+    margin-bottom: 0;
+  }
+  .user {
+    width: 27rem;
+    padding: 1rem;
+  }
+  .btninps {
+    height: 7rem;
+    grid-template-columns: 31% 31% 31%;
+    grid-template-rows: 3rem 3rem;
+  }
+  .btninps > input {
+    padding: 0.9rem;
+    border: 2px solid hsl(186, 14%, 43%);
+  }
+  .btninps > input:hover {
+    border: 3px solid hsla(185, 71%, 68%, 0.8);
+  }
+  .btninps > input:focus {
+    border: 3px solid hsl(172, 67%, 45%);
+  }
+  .input:focus {
+    border: 3px solid hsl(172, 67%, 45%);
+  }
+}/*# sourceMappingURL=styles.css.map */

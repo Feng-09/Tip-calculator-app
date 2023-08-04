@@ -1,0 +1,282 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: SpaceMono_bold;
+  src: url(fonts/SpaceMono-Bold.ttf);
+}
+
+@font-face {
+  font-family: SpaceMono_reg;
+  src: url(fonts/SpaceMono-Regular.ttf);
+}
+
+/*colors*/
+$sCyan: hsl(172, 67%, 45%);
+$darkGray: hsl(186, 14%, 43%);
+$dark: hsl(183, 100%, 15%);
+$gray: hsl(184, 14%, 56%);
+$lgray: hsl(185, 41%, 84%);
+$hov: hsla(185, 71%, 68%, 0.8);
+$vlgray: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+
+@mixin icon {
+  position: absolute;
+  top: 3.2rem;
+  left: 1rem;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin text($font, $size, $weight, $color) {
+  font-family: $font;
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+body {
+  background-color: $lgray;
+  text-align: center;
+}
+
+.logo {
+  padding: 3rem;
+}
+
+main {
+  background-color: $white;
+  padding: 1.8rem;
+  text-align: start;
+  border-radius: 2rem 2rem 0 0;
+  height: 100%;
+}
+
+.headers {
+  @include text(SpaceMono_reg, 1rem, 600, $darkGray);
+  margin-bottom: 0.7rem;
+}
+
+.input {
+  padding: 0.4rem 1rem;
+  width: 100%;
+  text-align: end;
+  @include text(SpaceMono_bold, 1.5rem, 700, $dark);
+  border: 1px solid $darkGray;
+  border-radius: 0.5rem;
+  &:hover {
+    border: 3px solid $hov;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+    border: 3px solid $sCyan;
+  }
+}
+
+.numinps {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  @include icon;
+}
+
+.btninps {
+  display: grid;
+  width: 100%;
+  height: 10rem;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+  grid-template-rows: 2.7rem 2.7rem 2.7rem;
+  align-content: space-between;
+
+  & > button {
+    background-color: $dark;
+    border-radius: 0.4rem;
+    border: none;
+    transition: 0.1s;
+    @include text(SpaceMono_bold, 1.4rem, 700, $white);
+    &:hover {
+      background-color: $hov;
+      transition: 0.1s;
+      cursor: pointer;
+    }
+  }
+
+  & > input {
+    text-align: end;
+    padding: 1rem;
+    @include text(SpaceMono_bold, 1.4rem, 700, $dark);
+    outline: none;
+    border: 1px solid $darkGray;
+    border-radius: 0.4rem;
+    &:hover {
+      border: 3px solid $hov;
+      cursor: pointer;
+    }
+    &:focus {
+      border: 3px solid $sCyan;
+    }
+  }
+}
+
+.tipinp {
+  margin-bottom: 2rem;
+}
+
+button.selected {
+  background-color: $sCyan;
+}
+
+.result {
+  background-color: $dark;
+  border-radius: 1rem;
+  width: 100%;
+  height: 18rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & > div {
+    @include flex;
+    & > p {
+      @include text(SpaceMono_reg, 1rem, 600, $vlgray);
+      & > span {
+        font-size: 0.8rem;
+        font-weight: 400;
+        opacity: 0.5;
+      }
+    }
+    & > h1 {
+      @include text(SpaceMono_bold, 2.5rem, 700, $sCyan);
+    }
+  }
+
+  & > button {
+    height: 3rem;
+    background-color: $sCyan;
+    opacity: 0.2;
+    border-radius: 0.5rem;
+    border: none;
+    @include text(SpaceMono_bold, 1.2rem, 700, $dark);
+    &:hover {
+      opacity: 1;
+      background-color: $hov;
+      transition: 0.2s;
+    }
+  }
+}
+
+footer {
+  font-family: SpaceMono_reg;
+  position: relative;
+  bottom: 0;
+  & > a {
+    font-size: 0.7rem;
+    text-decoration: none;
+  }
+}
+
+#error,
+#error2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include text(SpaceMono_reg, 1rem, 600, rgb(228, 119, 119));
+  animation: shake;
+  animation-duration: 0.2s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0px);
+  }
+
+  25% {
+    transform: translateX(-0.2rem);
+  }
+
+  50% {
+    transform: translateX(0.2rem);
+  }
+
+  75% {
+    transform: translateX(-0.2rem);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+input.error {
+  border: 2px solid rgb(228, 119, 119);
+}
+
+@media screen and (min-width: 960px) {
+  body {
+    padding: 1% 0 3% 0;
+  }
+
+  main {
+    @include flex();
+    width: 60rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0.1rem 0.1rem 2rem $hov;
+  }
+
+  .result {
+    width: 27rem;
+    height: 26rem;
+    padding: 3rem;
+    & > button {
+      margin-top: 3rem;
+    }
+    & > div > h1 {
+      font-size: 3.2rem;
+      position: relative;
+      bottom: 1rem;
+    }
+  }
+
+  #people {
+    margin-bottom: 0;
+  }
+
+  .user {
+    width: 27rem;
+    padding: 1rem;
+  }
+
+  .btninps {
+    height: 7rem;
+    grid-template-columns: 31% 31% 31%;
+    grid-template-rows: 3rem 3rem;
+    & > input {
+      padding: 0.9rem;
+      border: 2px solid $darkGray;
+      &:hover {
+        border: 3px solid $hov;
+      }
+      &:focus {
+        border: 3px solid $sCyan;
+      }
+    }
+  }
+
+  .input:focus {
+    border: 3px solid $sCyan;
+  }
+}
