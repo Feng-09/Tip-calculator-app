@@ -112,3 +112,5 @@ reset.addEventListener("click", () => {
   people.classList.remove("error");
   bill.classList.remove("error");
 });
+
+console.log(tip.length);
